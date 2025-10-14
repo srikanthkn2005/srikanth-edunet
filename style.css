@@ -1,0 +1,20 @@
+body {
+  background-color: lightblue;
+}
+
+input {
+  padding: 10px;
+  border-radius: 5px;
+  <!-- border: 2px solid black; -->
+    border: none;
+    margin: 10px;
+    font-size: 16px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: box-shadow 0.3s ease;
+    solidcolor: green;
+}
+<p style="color: red;">This text is red</p>
+h1 {
+  color: green;
+}
