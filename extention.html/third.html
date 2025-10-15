@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration & Login</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      width: 320px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #2575fc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #6a11cb;
+    }
+
+    p {
+      margin-top: 15px;
+      color: #555;
+    }
+
+    a {
+      color: #2575fc;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="form-container">
+    <h2>Register</h2>
+    <input type="text" id="regName" placeholder="Full Name" required>
+    <input type="email" id="regEmail" placeholder="Email" required>
+    <input type="password" id="regPassword" placeholder="Password" required>
+    <button onclick="register()">Register</button>
+    <p>Already have an account? <a onclick="showLogin()">Login</a></p>
+  </div>
+
+  <script>
+    function showLogin() {
+      document.getElementById("form-container").innerHTML = `
+        <h2>Login</h2>
+        <input type="email" id="loginEmail" placeholder="Email" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button onclick="login()">Login</button>
+        <p>Don't have an account? <a onclick="showRegister()">Register</a></p>
+      `;
+    }
+
+    function showRegister() {
+      document.getElementById("form-container").innerHTML = `
+        <h2>Register</h2>
+        <input type="text" id="regName" placeholder="Full Name" required>
+        <input type="email" id="regEmail" placeholder="Email" required>
+        <input type="password" id="regPassword" placeholder="Password" required>
+        <button onclick="register()">Register</button>
+        <p>Already have an account? <a onclick="showLogin()">Login</a></p>
+      `;
+    }
+
+    function register() {
+      const name = document.getElementById("regName").value;
+      const email = document.getElementById("regEmail").value;
+      const password = document.getElementById("regPassword").value;
+
+      if (name === "" || email === "" || password === "") {
+        alert("Please fill in all fields!");
+        return;
+      }
+
+      localStorage.setItem("userEmail", email);
+      localStorage.setItem("userPassword", password);
+      alert("Registration successful! Please login.");
+      showLogin();
+    }
+
+    function login() {
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+      const storedEmail = localStorage.getItem("userEmail");
+      const storedPassword = localStorage.getItem("userPassword");
+
+      if (email === storedEmail && password === storedPassword) {
+        alert("Login successful!");
+        document.getElementById("form-container").innerHTML = `
+          <h2>Welcome 🎉</h2>
+          <p>You are logged in as <b>${email}</b></p>
+          <button onclick="logout()">Logout</button>
+        `;
+      } else {
+        alert("Invalid email or password!");
+      }
+    }
+
+    function logout() {
+      showLogin();
+      alert("You have been logged out!");
+    }
+  </script>
+</body>
+</html>
+
+
+</body>
+</html>
+
+</body>
+</html>
